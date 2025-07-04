@@ -10,6 +10,8 @@ b. Install Node.js and npm
 Step 3: Verify Installation
               node -v
               npm -v
+If npm is not installed run following command
+		sudo apt install npm
 (Optional) Step 4: Install build-essential for compiling native
               sudo apt install -y build-essential
 Step 5: Install Angular CLI Globally
