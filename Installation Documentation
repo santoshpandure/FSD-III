@@ -49,3 +49,10 @@ ng generate service my-service
 ng generate module my-module
 
 
+
+Upgrade Node Js version
+Remove old Node.js (optional):
+     	sudo apt remove nodejs
+Add NodeSource repository (for LTS or Current):
+	curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+
