@@ -1,0 +1,49 @@
+Prerequisites: Node.js and npm installation(Ubuntu Operating System)
+Step 1: Update System Packages
+		sudo apt update
+    sudo apt upgrade
+Step 2: Install Node.js (Recommended via NodeSource)
+a. Add NodeSource PPA
+               curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+b. Install Node.js and npm
+              sudo apt install -y nodejs
+Step 3: Verify Installation
+              node -v
+              npm -v
+(Optional) Step 4: Install build-essential for compiling native
+              sudo apt install -y build-essential
+Step 5: Install Angular CLI Globally
+              sudo npm install -g @angular/cli
+Check version:
+             ng version
+Step 6: Create a New Angular Project
+            ng new my-angular-app
+
+It will ask:
+
+
+            Would you like to add Angular routing? (y/n)
+
+
+Which stylesheet format? (CSS, SCSS, etc.)
+
+
+           Choose as per your preference.
+
+
+Step 7: Navigate to the Project Directory
+cd my-angular-app
+Step 8: Serve the Application
+ng serve
+Then open your browser and go to:
+http://localhost:4200
+
+Advance Steps
+To build the project:
+ng build
+To generate components/services/modules, use:
+ng generate component my-component
+ng generate service my-service
+ng generate module my-module
+
+
