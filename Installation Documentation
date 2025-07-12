@@ -56,3 +56,23 @@ Remove old Node.js (optional):
 Add NodeSource repository (for LTS or Current):
 	curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 
+Installation on windows
+
+1. Download Node JS
+
+		Windows 32-bit Installer: https://nodejs.org/dist/v22.17.0/node-v22.17.0-x86.msi
+		Windows 64-bit Installer: https://nodejs.org/dist/v22.17.0/node-v22.17.0-x64.msi
+		After installing Node JS follow the next step
+
+		1. enable powershell
+
+			a. Press the Windows Key to open the Start menu.
+			b. Type “PowerShell“.
+			c. Right-click on the PowerShell result and select “Run as administrator“.
+			d. After opening the PowerShell window, execute “get-executionpolicy” to know the current execution policy.
+			e. Chances are it will say “Restricted“. This means the scripts are blocked.
+			f. In the PowerShell window, execute the “set-executionpolicy remotesigned” command.
+			g. Type “A” next to the confirmation message and press “Enter“.
+
+2. Install Angular CLI
+               npm install -g @angular/cli
