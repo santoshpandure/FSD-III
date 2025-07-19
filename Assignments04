@@ -4,6 +4,8 @@ Assignment No: 04
 
 import { Component } from '@angular/core';
 
+import { CommonModule } from '@angular/common'; // CommonModule provides common Angular directives and pipes such as: ngif and ngfor
+
 @Component({
   selector: 'app-student-list',
   templateUrl: './student-list.component.html'
