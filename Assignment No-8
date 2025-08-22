@@ -1,0 +1,80 @@
+
+//create project
+
+ng new myApp --routing
+
+//add components
+
+ng generate component about
+ng generate component home
+ng generate component Contact Us
+
+//app.component.ts
+
+// Import core Angular Component decorator
+import { Component } from '@angular/core';
+
+// Import RouterOutlet to render routed components in the template
+import { RouterOutlet } from '@angular/router';
+
+// Import RouterModule to enable routing directives like routerLink, routerLinkActive, etc.
+import { RouterModule } from '@angular/router';
+
+@Component({
+  // Selector used in index.html or other templates
+  selector: 'app-root',
+
+  // Declare this as a standalone component (no need for NgModule)
+  standalone: true,
+
+  // Import routing features into this component (needed for <router-outlet>, routerLink, etc.)
+  imports: [RouterOutlet, RouterModule],
+
+  // HTML template for this component
+  templateUrl: './app.component.html',
+
+  // CSS styling for this component
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  // Title property used in the component
+  title = 'rotuingapp';
+}
+
+
+
+//app.component.html
+
+<!-- src/app/app.component.html -->
+
+<!-- Heading of the app -->
+<h1>Simple Angular Routing App</h1>
+
+<!-- Navigation bar -->
+<nav>
+  <!-- Link to the Home route (empty path '') -->
+  <a routerLink="">Home</a> |
+
+  <!-- Link to the About route -->
+  <!-- 'routerLinkActive="active"' adds the 'active' CSS class when this route is active -->
+  <a routerLink="/about" routerLinkActive="active">About</a>
+</nav>
+
+<!-- Horizontal line separator -->
+<hr />
+
+<!-- This is where routed components will be displayed -->
+<router-outlet></router-outlet>
+
+
+//app.routes.ts
+
+
+import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+
+export const routes: Routes = [
+ { path: '', component: HomeComponent },        // default path
+ { path: 'about', component: AboutComponent },  // /about path
+];
