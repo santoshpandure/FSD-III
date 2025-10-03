@@ -1,0 +1,158 @@
+To-Do List – Add, edit, mark complete, and delete tasks.
+npx create-react-app todo-app
+cd todo-app
+npm start
+
+//App.js
+import React, { useState } from "react";
+import "./App.css";
+
+function App() {
+  const [task, setTask] = useState("");
+  const [todos, setTodos] = useState([]);
+  const [editIndex, setEditIndex] = useState(null);
+
+  // Add or Update Task
+  const handleAddTask = () => {
+    if (!task.trim()) return;
+
+    if (editIndex !== null) {
+      const updatedTodos = [...todos];
+      updatedTodos[editIndex].text = task;
+      setTodos(updatedTodos);
+      setEditIndex(null);
+    } else {
+      setTodos([...todos, { text: task, completed: false }]);
+    }
+
+    setTask("");
+  };
+
+  // Delete Task
+  const handleDelete = (index) => {
+    setTodos(todos.filter((_, i) => i !== index));
+  };
+
+  // Mark Complete / Incomplete
+  const toggleComplete = (index) => {
+    const updatedTodos = [...todos];
+    updatedTodos[index].completed = !updatedTodos[index].completed;
+    setTodos(updatedTodos);
+  };
+
+  // Edit Task
+  const handleEdit = (index) => {
+    setTask(todos[index].text);
+    setEditIndex(index);
+  };
+
+  return (
+    <div className="app">
+      <h1>To-Do List</h1>
+
+      <div className="input-section">
+        <input
+          type="text"
+          value={task}
+          placeholder="Enter a task"
+          onChange={(e) => setTask(e.target.value)}
+        />
+        <button onClick={handleAddTask}>
+          {editIndex !== null ? "Update" : "Add"}
+        </button>
+      </div>
+
+      <ul className="todo-list">
+        {todos.map((todo, index) => (
+          <li key={index} className={todo.completed ? "completed" : ""}>
+            <span onClick={() => toggleComplete(index)}>{todo.text}</span>
+            <div className="actions">
+              <button onClick={() => handleEdit(index)}>Edit</button>
+              <button onClick={() => handleDelete(index)}>Delete</button>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+//App.css
+.app {
+  text-align: center;
+  margin-top: 50px;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #333;
+}
+
+.input-section {
+  margin-bottom: 20px;
+}
+
+.input-section input {
+  padding: 10px;
+  width: 250px;
+  margin-right: 10px;
+  font-size: 1rem;
+}
+
+.input-section button {
+  padding: 10px 20px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.input-section button:hover {
+  opacity: 0.9;
+}
+
+.todo-list {
+  list-style: none;
+  padding: 0;
+  width: 350px;
+  margin: 0 auto;
+}
+
+.todo-list li {
+  display: flex;
+  justify-content: space-between;
+  background: #f2f2f2;
+  margin: 8px 0;
+  padding: 10px;
+  border-radius: 6px;
+  align-items: center;
+}
+
+.todo-list li.completed span {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.todo-list li span {
+  cursor: pointer;
+}
+
+.actions button {
+  margin-left: 5px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.actions button:first-child {
+  background: #2196f3;
+  color: white;
+}
+
+.actions button:last-child {
+  background: #f44336;
+  color: white;
+}
