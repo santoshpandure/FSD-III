@@ -1,0 +1,13 @@
+Hello World React App
+use following command to create React Project.
+npx create-react-app my-app
+
+//App.js
+
+function App() {
+ return (
+   <h1> Hello world</h1>
+ );
+}
+
+export default App;
